@@ -1,3 +1,4 @@
+<!--全局通用布局-->
 <template>
   <div id="basicLayout">
     <a-layout style="min-height: 100vh">

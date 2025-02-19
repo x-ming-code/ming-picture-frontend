@@ -9,12 +9,24 @@
           </div>
         </RouterLink>
       </a-col>
+
+      <!--      给菜单绑定点击事件 实现页面跳转 -->
       <a-col flex="auto">
-        <a-menu v-model:selectedKeys="current" mode="horizontal" :items="items" />
+        <a-menu
+          v-model:selectedKeys="current"
+          mode="horizontal"
+          :items="items"
+          @click="doMenuClick"
+        />
       </a-col>
       <a-col flex="120px">
         <div class="user-login-status">
-          <a-button type="primary" href="/user/login">登录</a-button>
+          <div v-if="loginUserStore.loginUser.id">
+            {{ loginUserStore.loginUser.userName ?? '无名' }}
+          </div>
+          <div v-else>
+              <a-button type="primary" href="/user/login">登录</a-button>
+          </div>
         </div>
       </a-col>
     </a-row>
@@ -24,8 +36,28 @@
 import { h, ref } from 'vue'
 import { HomeOutlined } from '@ant-design/icons-vue'
 import { MenuProps } from 'ant-design-vue'
+import { useRouter } from 'vue-router'
+import { useLoginUserStore } from '@/stores/useLoginUserStore.ts'
 
-const current = ref<string[]>(['home'])
+//获取用户登录信息
+const loginUserStore = useLoginUserStore()
+loginUserStore.fetchLoginUser()
+
+const router = useRouter()
+// 当前选中菜单
+const current = ref<string[]>([])
+// 监听路由变化，更新当前选中菜单
+router.afterEach((to, from, next) => {
+  current.value = [to.path]
+})
+
+// 路由跳转事件
+const doMenuClick = ({ key }: { key: string }) => {
+  router.push({
+    path: key,
+  })
+}
+
 const items = ref<MenuProps['items']>([
   {
     key: '/',
