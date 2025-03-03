@@ -20,7 +20,7 @@
         />
       </a-col>
       <a-col flex="120px">
-        <div class="user-login-status">
+        <div class="picture-login-status">
           <div v-if="loginUserStore.loginUser.id">
             <a-space style="display: flex; flex-wrap: wrap">
               <a-dropdown :placement="'bottom'" :arrow="{ pointAtCenter: true }">
@@ -49,7 +49,7 @@
             </a-space>
           </div>
           <div v-else>
-            <a-button type="primary" href="/user/login">登录</a-button>
+            <a-button type="primary" href="/picture/login">登录</a-button>
           </div>
         </div>
       </a-col>
@@ -85,7 +85,7 @@ const logout = async () => {
     })
     message.success("退出登录成功")
     router.push({
-      path: "/user/login"
+      path: "/picture/login"
     })
   } else {
     message.error("退出登录失败" + res.data.message)
@@ -111,6 +111,18 @@ const originItems = [
     label: '用户管理',
     title: '用户管理',
   },
+  {
+    key: '/add_picture',
+    label: '创建图片',
+    title: '创建图片',
+  },
+  {
+    key: '/admin/pictureManage',
+    label: '图片管理',
+    title: '图片管理',
+  },
+
+
   {
     key: 'others',
     label: h('a', { href: 'https://www.codefather.cn', target: '_blank' }, '编程导航'),
