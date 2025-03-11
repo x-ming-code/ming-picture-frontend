@@ -4,7 +4,7 @@ export const PIC_REVIEW_STATUS_ENUM = {
   REJECT: 2,
 }
 
-export const PIC_REVIEW_STATUS_MAP = {
+export const PIC_REVIEW_STATUS_MAP: Record<number, string> = {
   0: '待审核',
   1: '通过',
   2: '拒绝',

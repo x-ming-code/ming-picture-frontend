@@ -30,19 +30,23 @@
                 </ASpace>
                 <template #overlay>
                   <a-menu>
+<!--                    <a-menu-item>-->
+<!--                      <a href="javascript:;">-->
+<!--                        <UserOutlined/>-->
+<!--                        个人信息</a>-->
+<!--                    </a-menu-item>-->
                     <a-menu-item>
-                      <a href="javascript:;">
-                        <UserOutlined/>
-                        个人信息</a>
+                      <router-link to="/my_space">
+                        <UserOutlined />
+                        我的空间
+                      </router-link>
                     </a-menu-item>
                     <a-menu-item>
                       <a href="javascript:;" @click="logout">
                         <LogoutOutlined/>
                         退出登录</a>
                     </a-menu-item>
-                    <a-menu-item>
-                      <a href="javascript:;">3rd menu item</a>
-                    </a-menu-item>
+
                   </a-menu>
                 </template>
               </a-dropdown>
@@ -121,13 +125,19 @@ const originItems = [
     label: '图片管理',
     title: '图片管理',
   },
-
-
   {
-    key: 'others',
-    label: h('a', { href: 'https://www.codefather.cn', target: '_blank' }, '编程导航'),
-    title: '编程导航',
+    key: '/admin/spaceManage',
+    label: '空间管理',
+    title: '空间管理',
   },
+
+
+
+  // {
+  //   key: 'others',
+  //   label: h('a', { href: 'https://www.codefather.cn', target: '_blank' }, '编程导航'),
+  //   title: '编程导航',
+  // },
 ]
 
 // 过滤菜单项
