@@ -29,6 +29,16 @@
                 </a-flex>
               </template>
             </a-card-meta>
+            <template v-if="showOp" #actions>
+              <a-space @click="e => doEdit(picture, e)">
+                <edit-outlined />
+                编辑
+              </a-space>
+              <a-space @click="e => doDelete(picture, e)">
+                <delete-outlined />
+                删除
+              </a-space>
+            </template>
 
           </a-card>
         </a-list-item>
@@ -39,6 +49,9 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import {DeleteOutlined,EditOutlined} from '@ant-design/icons-vue'
+import {deletePictureUsingPost} from "@/api/pictureController.ts";
+import {message, Modal} from "ant-design-vue";
 
 interface Props {
   dataList?: API.PictureVO[]
@@ -64,6 +77,47 @@ const doClickPicture = (picture: API.PictureVO) => {
     path: `/picture/${picture.id}`,
   })
 }
+
+// 编辑
+const doEdit = (picture, e) => {
+  e.stopPropagation()
+  router.push({
+    path: '/add_picture',
+    query: {
+      id: picture.id,
+      spaceId: picture.spaceId,
+    },
+  })
+}
+
+// 删除
+const doDelete = (picture, e) => {
+  e.stopPropagation();
+  const id = picture.id;
+  if (!id) {
+    return;
+  }
+
+  Modal.confirm({
+    title: '确认删除',
+    content: '确定要删除这张图片吗？',
+    okText: '确定',
+    cancelText: '取消',
+    onOk: async () => {
+      try {
+        const res = await deletePictureUsingPost({ id });
+        if (res.data.code === 0) {
+          message.success('删除成功');
+          props?.onReload();
+        } else {
+          message.error('删除失败');
+        }
+      } catch (error) {
+        message.error('删除请求失败');
+      }
+    },
+  });
+};
 
 
 </script>
