@@ -29,29 +29,45 @@
                 </a-flex>
               </template>
             </a-card-meta>
+<!--            <template v-if="showOp" #actions>-->
+<!--              <search-outlined @click="(e) => doSearch(picture, e)" />-->
+<!--              <share-alt-outlined @click="(e) => doShare(picture, e)" />-->
+<!--              <edit-outlined @click="(e) => doEdit(picture, e)" />-->
+<!--              <delete-outlined @click="(e) => doDelete(picture, e)" />-->
+<!--            </template>-->
+
             <template v-if="showOp" #actions>
-              <a-space @click="e => doEdit(picture, e)">
-                <edit-outlined />
-                编辑
-              </a-space>
-              <a-space @click="e => doDelete(picture, e)">
-                <delete-outlined />
-                删除
-              </a-space>
+              <a-tooltip title="搜索">
+                <search-outlined @click="(e) => doSearch(picture, e)" />
+              </a-tooltip>
+              <a-tooltip title="分享">
+                <share-alt-outlined @click="(e) => doShare(picture, e)" />
+              </a-tooltip>
+              <a-tooltip title="编辑">
+                <edit-outlined @click="(e) => doEdit(picture, e)" />
+              </a-tooltip>
+              <a-tooltip title="删除">
+                <delete-outlined @click="(e) => doDelete(picture, e)" />
+              </a-tooltip>
             </template>
+
 
           </a-card>
         </a-list-item>
       </template>
+
     </a-list>
+    <ShareModal ref="shareModalRef" :link="shareLink" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
-import {DeleteOutlined,EditOutlined} from '@ant-design/icons-vue'
+import {useRouter} from 'vue-router'
+import {DeleteOutlined, EditOutlined, SearchOutlined,ShareAltOutlined} from '@ant-design/icons-vue'
 import {deletePictureUsingPost} from "@/api/pictureController.ts";
 import {message, Modal} from "ant-design-vue";
+import ShareModal from "@/components/ShareModal.vue";
+import {ref} from "vue";
 
 interface Props {
   dataList?: API.PictureVO[]
@@ -69,6 +85,13 @@ const props = withDefaults(defineProps<Props>(), {
   canEdit: false,
   canDelete: false,
 })
+
+
+// 搜索
+const doSearch = (picture, e) => {
+  e.stopPropagation()
+  window.open(`/search_picture?pictureId=${picture.id}`)
+}
 
 const router = useRouter()
 // 跳转至图片详情页
@@ -105,7 +128,7 @@ const doDelete = (picture, e) => {
     cancelText: '取消',
     onOk: async () => {
       try {
-        const res = await deletePictureUsingPost({ id });
+        const res = await deletePictureUsingPost({id});
         if (res.data.code === 0) {
           message.success('删除成功');
           props?.onReload();
@@ -118,6 +141,20 @@ const doDelete = (picture, e) => {
     },
   });
 };
+
+// 分享弹窗引用
+const shareModalRef = ref()
+// 分享链接
+const shareLink = ref<string>()
+
+// 分享
+const doShare = (picture: API.PictureVO, e: Event) => {
+  e.stopPropagation()
+  shareLink.value = `${window.location.protocol}//${window.location.host}/picture/${picture.id}`
+  if (shareModalRef.value) {
+    shareModalRef.value.openModal()
+  }
+}
 
 
 </script>

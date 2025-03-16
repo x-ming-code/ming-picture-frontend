@@ -13,6 +13,7 @@ import SpaceManagePage from "@/pages/admin/SpaceManagePage.vue";
 import AddSpacePage from "@/pages/AddSpacePage.vue";
 import MySpacePage from "@/pages/MySpacePage.vue";
 import SpaceDetailPage from "@/pages/SpaceDetailPage.vue";
+import SearchPicturePage from "@/pages/SearchPicturePage.vue";
 
 
 const router = createRouter({
@@ -55,7 +56,6 @@ const router = createRouter({
     },
 
 
-
     {
       path: '/add_picture',
       name: '创建图片',
@@ -82,6 +82,11 @@ const router = createRouter({
       name: '空间详情',
       component: SpaceDetailPage,
       props: true,
+    },
+    {
+      path: '/search_picture',
+      name: '图片搜索',
+      component: SearchPicturePage,
     },
 
 
