@@ -248,14 +248,23 @@ const onCropSuccess = (newPicture: API.PictureVO) => {
     <div v-if="picture" class="edit-bar">
       <a-space size="middle">
         <a-button :icon="h(EditOutlined)" @click="doEditPicture">编辑图片</a-button>
+        <a-button type="primary" :icon="h(FullscreenOutlined)" @click="doImagePainting">
+          AI 扩图
+        </a-button>
       </a-space>
 
       <ImageCropper
-          ref="imageCropperRef"
-          :imageUrl="picture?.url"
-          :picture="picture"
-          :spaceId="spaceId"
-          :onSuccess="onCropSuccess"
+        ref="imageCropperRef"
+        :imageUrl="picture?.url"
+        :picture="picture"
+        :spaceId="spaceId"
+        :onSuccess="onCropSuccess"
+      />
+      <ImageOutPainting
+        ref="imageOutPaintingRef"
+        :picture="picture"
+        :spaceId="spaceId"
+        :onSuccess="onImageOutPaintingSuccess"
       />
     </div>
     <!-- 图片信息表单 -->
@@ -314,6 +323,7 @@ import { useRoute, useRouter } from 'vue-router'
 import UrlPictureUpload from '@/components/UrlPictureUpload.vue'
 import ImageCropper from '@/components/ImageCropper.vue'
 import { EditOutlined, FullscreenOutlined } from '@ant-design/icons-vue'
+import ImageOutPainting from "@/components/ImageOutPainting.vue";
 
 
 const router = useRouter()
@@ -430,7 +440,18 @@ const onCropSuccess = (newPicture: API.PictureVO) => {
   picture.value = newPicture
 }
 
+// ----- AI 扩图引用 -----
+const imageOutPaintingRef = ref()
 
+// 打开 AI 扩图弹窗
+const doImagePainting = async () => {
+  imageOutPaintingRef.value?.openModal()
+}
+
+// AI 扩图保存事件
+const onImageOutPaintingSuccess = (newPicture: API.PictureVO) => {
+  picture.value = newPicture
+}
 </script>
 
 <style scoped>
