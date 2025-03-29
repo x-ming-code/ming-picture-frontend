@@ -44,10 +44,10 @@
                 <share-alt-outlined @click="(e) => doShare(picture, e)" />
               </a-tooltip>
               <a-tooltip title="编辑">
-                <edit-outlined @click="(e) => doEdit(picture, e)" />
+                <edit-outlined v-if="canEdit" @click="(e) => doEdit(picture, e)" />
               </a-tooltip>
               <a-tooltip title="删除">
-                <delete-outlined @click="(e) => doDelete(picture, e)" />
+                <delete-outlined v-if="canDelete" @click="(e) => doDelete(picture, e)" />
               </a-tooltip>
             </template>
 
@@ -73,9 +73,9 @@ interface Props {
   dataList?: API.PictureVO[]
   loading?: boolean
   showOp?: boolean
+  onReload?: () => void
   canEdit?: boolean
   canDelete?: boolean
-  onReload?: () => void
 }
 
 const props = withDefaults(defineProps<Props>(), {

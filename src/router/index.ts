@@ -15,6 +15,7 @@ import MySpacePage from "@/pages/MySpacePage.vue";
 import SpaceDetailPage from "@/pages/SpaceDetailPage.vue";
 import SearchPicturePage from "@/pages/SearchPicturePage.vue";
 import SpaceAnalyzePage from "@/pages/SpaceAnalyzePage.vue";
+import SpaceUserManagePage from "@/pages/admin/SpaceUserManagePage.vue";
 
 
 const router = createRouter({
@@ -55,6 +56,13 @@ const router = createRouter({
       name: '空间分析',
       component: SpaceAnalyzePage,
     },
+    {
+      path: '/spaceUserManage/:id',
+      name: '空间成员管理',
+      component: SpaceUserManagePage,
+      props: true,
+    },
+
     {
       path: '/add_space',
       name: '创建空间',
