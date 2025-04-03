@@ -4,8 +4,8 @@
       <a-col flex="200px">
         <RouterLink to="/">
           <div class="title-bar">
-            <img class="logo" src="../assets/logo.svg" alt="logo"/>
-            <div class="title">XX云图库</div>
+            <img class="logo" src="../assets/logo.png" alt="logo"/>
+            <div class="title">智能云图库</div>
           </div>
         </RouterLink>
       </a-col>

@@ -13,7 +13,10 @@
       </a-layout>
 
       <a-layout-footer class="footer">
-        <a href="https://www.ming-code.work" target="_blank"> XXXXXXXXXXXXX </a>
+
+        <a href='https://beian.miit.gov.cn/' target="_blank">
+          备案号：豫ICP备2023021013号
+        </a>
       </a-layout-footer>
     </a-layout>
   </div>

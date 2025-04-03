@@ -4,6 +4,12 @@ declare namespace API {
     data?: boolean
     message?: string
   }
+  type PictureUploadRequest = {
+    fileUrl?: string
+    id?: number
+    picName?: string
+    spaceId?: number
+  }
 
   type BaseResponseCreateOutPaintingTaskResponse_ = {
     code?: number
