@@ -16,6 +16,7 @@ import SpaceDetailPage from "@/pages/SpaceDetailPage.vue";
 import SearchPicturePage from "@/pages/SearchPicturePage.vue";
 import SpaceAnalyzePage from "@/pages/SpaceAnalyzePage.vue";
 import SpaceUserManagePage from "@/pages/admin/SpaceUserManagePage.vue";
+import UserProfilePage from "@/pages/UserProfilePage.vue";
 
 
 const router = createRouter({
@@ -60,6 +61,12 @@ const router = createRouter({
       path: '/spaceUserManage/:id',
       name: '空间成员管理',
       component: SpaceUserManagePage,
+      props: true,
+    },
+    {
+      path: '/userProfile/:userId',
+      name: '个人中心',
+      component: UserProfilePage,
       props: true,
     },
 

@@ -175,10 +175,4 @@ const handleSubmit = async () => {
     message.error('添加失败，' + res.data.message)
   }
 }
-
-
-
-
-
-
 </script>

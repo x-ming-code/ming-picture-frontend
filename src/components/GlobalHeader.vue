@@ -30,11 +30,13 @@
                 </ASpace>
                 <template #overlay>
                   <a-menu>
-<!--                    <a-menu-item>-->
-<!--                      <a href="javascript:;">-->
-<!--                        <UserOutlined/>-->
-<!--                        个人信息</a>-->
-<!--                    </a-menu-item>-->
+                    <a-menu-item key="userProfile">
+                      <router-link :to="`/userProfile/${loginUserStore.loginUser.id}`">
+                        <UserOutlined />
+                        个人信息
+                      </router-link>
+                    </a-menu-item>
+
                     <a-menu-item>
                       <router-link to="/my_space">
                         <UserOutlined />

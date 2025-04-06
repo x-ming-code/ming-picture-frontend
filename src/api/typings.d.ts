@@ -4,12 +4,6 @@ declare namespace API {
     data?: boolean
     message?: string
   }
-  type PictureUploadRequest = {
-    fileUrl?: string
-    id?: number
-    picName?: string
-    spaceId?: number
-  }
 
   type BaseResponseCreateOutPaintingTaskResponse_ = {
     code?: number
@@ -633,6 +627,13 @@ declare namespace API {
   type testDownloadFileUsingGETParams = {
     /** filepath */
     filepath?: string
+  }
+
+  type uploadPasswordUsingPOSTParams = {
+    /** newPassword */
+    newPassword?: string
+    /** oldPassword */
+    oldPassword?: string
   }
 
   type uploadPictureByUrlUsingPOSTParams = {
