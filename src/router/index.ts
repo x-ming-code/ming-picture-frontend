@@ -17,6 +17,7 @@ import SearchPicturePage from "@/pages/SearchPicturePage.vue";
 import SpaceAnalyzePage from "@/pages/SpaceAnalyzePage.vue";
 import SpaceUserManagePage from "@/pages/admin/SpaceUserManagePage.vue";
 import UserProfilePage from "@/pages/UserProfilePage.vue";
+import UserFeedback from "@/pages/UserFeedback.vue";
 
 
 const router = createRouter({
@@ -76,11 +77,15 @@ const router = createRouter({
       component: AddSpacePage,
     },
 
-
     {
       path: '/add_picture',
       name: '创建图片',
       component: AddPicturePage,
+    },
+    {
+      path: '/userFeedback',
+      name: '建议反馈',
+      component: UserFeedback,
     },
     {
       path: '/picture/:id',

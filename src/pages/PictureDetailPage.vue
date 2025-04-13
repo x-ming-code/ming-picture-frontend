@@ -11,7 +11,7 @@
       <a-col :sm="24" :md="8" :xl="6">
         <a-card title="图片信息">
           <a-descriptions :column="1">
-            <a-descriptions-item label="作者">
+            <a-descriptions-item label="上传者">
               <a-space>
                 <a-avatar :size="24" :src="picture.user?.userAvatar" />
                 <div>{{ picture.user?.userName }}</div>

@@ -67,7 +67,9 @@
           </template>
         </a-list>-->
     <!-- 图片列表 -->
-    <PictureList :dataList="dataList" :loading="loading" />
+<!--    <PictureList :dataList="dataList" :loading="loading" />-->
+    <PictureList :dataList="dataList" :loading="loading" :showOp="true" />
+
     <!-- 分页 -->
     <a-pagination
         style="text-align: right"
@@ -103,12 +105,10 @@ const loading = ref(true)
 // 搜索条件
 const searchParams = reactive<API.PictureQueryRequest>({
   current: 1,
-  pageSize: 12,
+  pageSize: 20,
   sortField: 'createTime',
   sortOrder: 'descend',
 })
-
-
 
 // 分页参数
 const onPageChange = (page: number, pageSize: number) => {

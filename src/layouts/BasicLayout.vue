@@ -17,6 +17,10 @@
         <a href='https://beian.miit.gov.cn/' target="_blank">
           备案号：豫ICP备2023021013号
         </a>
+        <p class="disclaimer">
+<!--          网站声明：本站所有壁纸资源仅供学习与参考，禁止商用，壁纸资源来源于网络和壁纸投稿，图片版权归原创作者所有，禁止用于商业用途，若有侵权问题敬请告知我们，我们会尽快处理。-->
+          网站声明：本站图片资源均来源于网络，版权归属原作者。仅提供个人非商业使用，严禁二次商用或非法传播。若涉及侵权，敬请告知我们删除。网站不对图片合法性负责，使用风险由用户自行承担。访问即视为同意本声明。
+        </p>
       </a-layout-footer>
     </a-layout>
   </div>
@@ -30,7 +34,26 @@ import GlobalSider from "@/components/GlobalSider.vue";
 <style scoped>
 #basicLayout {
 }
+.footer {
+  text-align: center;
+  padding: 20px 0;
+}
 
+.disclaimer {
+  margin-top:5px ;
+  margin-bottom:-2px ;
+  color: #8c8c8c; /* 浅灰色 */
+  font-size: 10px;
+}
+
+a {
+  color: #1890ff; /* 蓝色链接 */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
 #basicLayout .header {
   padding-inline: 20px;
   color: unset;

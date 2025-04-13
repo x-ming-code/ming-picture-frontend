@@ -680,7 +680,18 @@ declare namespace API {
     userRole?: string
   }
 
+  type UserFeedbackRequest = {
+    content?: string
+    createTime?: string
+    feedbackType?: number
+    qq?: string
+    status?: string
+    updateTime?: string
+  }
+
   type UserLoginRequest = {
+    captchaCode?: string
+    captchaKey?: string
     userAccount?: string
     userPassword?: string
   }
@@ -719,5 +730,12 @@ declare namespace API {
     userName?: string
     userProfile?: string
     userRole?: string
+  }
+
+  type verifyCaptchaUsingPOSTParams = {
+    /** code */
+    code: string
+    /** uuid */
+    uuid: string
   }
 }

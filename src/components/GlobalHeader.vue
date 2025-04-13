@@ -32,14 +32,14 @@
                   <a-menu>
                     <a-menu-item key="userProfile">
                       <router-link :to="`/userProfile/${loginUserStore.loginUser.id}`">
-                        <UserOutlined />
+                        <UserOutlined/>
                         个人信息
                       </router-link>
                     </a-menu-item>
 
                     <a-menu-item>
                       <router-link to="/my_space">
-                        <UserOutlined />
+                        <UserOutlined/>
                         我的空间
                       </router-link>
                     </a-menu-item>
@@ -69,6 +69,7 @@ import {MenuProps, message} from 'ant-design-vue'
 import {useRouter} from 'vue-router'
 import {useLoginUserStore} from '@/stores/useLoginUserStore.ts'
 import {userLogoutUsingPost} from "@/api/userController.ts";
+import UserFeedback from "@/pages/UserFeedback.vue";
 
 //获取用户登录信息
 const loginUserStore = useLoginUserStore()
@@ -123,6 +124,10 @@ const originItems = [
     title: '创建图片',
   },
   {
+    key: '/userFeedback',
+    label: '建议反馈',
+  },
+  {
     key: '/admin/pictureManage',
     label: '图片管理',
     title: '图片管理',
@@ -132,7 +137,6 @@ const originItems = [
     label: '空间管理',
     title: '空间管理',
   },
-
 
 
   // {
